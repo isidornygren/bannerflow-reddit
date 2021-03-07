@@ -1,0 +1,47 @@
+.post {
+    padding: 16px;
+    border-bottom: 1px solid #ddd;
+    margin: 8px 0;
+
+    h1, h2, h3, p {
+        margin: 0;
+    }
+
+    .title {
+        font-weight: 500;
+    }
+
+    .thumb {
+        max-height:100px;
+        width: auto;
+        float: left;
+        margin-right: 16px;
+    }
+
+    .top-bar, .comments, .subreddit {
+        font-size: 0.8rem
+    }
+
+    .author {
+        font-weight: 600;
+        color: #999;
+    }
+
+    .meta {
+        float: right;
+    }
+
+    .permalink {
+        margin-left: 4px;
+    }
+
+    .comments {
+        width: 100%;
+        text-align: right;
+    }
+
+    .content { 
+        margin-top: 8px;
+        overflow: auto;
+    }
+}

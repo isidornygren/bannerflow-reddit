@@ -1,0 +1,14 @@
+.pagination {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+
+    .next {
+        align-self: flex-end;
+    }
+}
+
+.controls {
+    border-bottom: 1px solid #ddd;
+    padding: 16px 0;
+}

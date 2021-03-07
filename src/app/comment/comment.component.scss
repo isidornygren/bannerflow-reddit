@@ -1,0 +1,41 @@
+$comment-inlet: 16px;
+
+.comment {
+    .author {
+        font-weight: bold;
+    }
+
+    .meta {
+        float: right;
+    }
+
+    h1, h2, h3, p {
+        margin: 0;
+    }
+
+    .content {
+        padding: 16px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .top-bar, .comments {
+        font-size: 0.8rem
+    }
+
+    .nested{
+        position: relative;
+
+        .wrapper {
+            margin-left: $comment-inlet;
+        }
+
+        .step-wrapper {
+            content: '';
+            position: absolute;
+            width: $comment-inlet;
+            top: 0; right: 0; bottom: 0; left: 0;
+            z-index: -1;
+            margin-left: 0px;
+        }
+    }
+}

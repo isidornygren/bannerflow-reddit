@@ -1,0 +1,25 @@
+<article *ngIf="post" class="post">
+  <p class="top-bar">
+    <span class="author">/u/{{ post.author }}</span>
+    <span class="meta">
+      <time>{{ post.created_utc * 1000 | date: "medium" }}</time>
+      <a class="permalink" href="https://reddit.com{{ post.permalink }}">permalink</a>
+    </span>
+  </p>
+  <div class="content">
+    <a *ngIf="thumb" href="{{ thumb.source.url | unescape }}"
+      ><img src="{{ thumb.source.url | unescape }}" class="thumb" width="{{ thumb.source.width }}" height="{{ thumb.source.height }}"
+    /></a>
+    <h3 class="title">
+      {{ post.title }}
+    </h3>
+    <p class="subreddit">
+      <a href="r/{{ post.subreddit }}">/r/{{ post.subreddit }}</a>
+    </p>
+    <span [innerHtml]="post.selftext_html | unescape"></span>
+  </div>
+  <p *ngIf="!isNested" class="comments">
+    Comments: {{ post.num_comments }} Score: {{ post.ups }}
+    <a href="{{ post.permalink }}">View thread</a>
+  </p>
+</article>

@@ -1,0 +1,8 @@
+<div *ngIf="post$ | async as post; else loading">
+    <app-post [post]="post.post" [isNested]="true"></app-post>
+    <app-comment *ngFor="let comment of post.comments" [comment]="comment"></app-comment>
+</div>
+
+<ng-template #loading>
+    Loading...
+</ng-template>

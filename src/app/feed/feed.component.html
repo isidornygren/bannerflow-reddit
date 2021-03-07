@@ -1,0 +1,50 @@
+<h2>r/{{ subreddit }}</h2>
+
+<div class="controls">
+  <p>How many posts to fetch</p>
+
+  <label *ngFor="let value of limitValues">
+    <input
+      type="radio"
+      value="{{ value }}"
+      name="amount"
+      checked="{{ value === this.limit ? 'checked' : ''}}"
+      (change)="onChangeDisplayAmount(value)"
+    />
+    {{ value }}
+  </label>
+</div>
+
+<div *ngIf="feed$ | async as feed; else loading">
+  <div *ngFor="let post of feed.data.children">
+    <app-post [post]="post.data"></app-post>
+  </div>
+
+  <div class="pagination">
+    <a
+      *ngIf="feed.data.before"
+      [routerLink]="['/r', subreddit]"
+      [queryParams]="{
+        before: feed.data.before,
+        after: null,
+        count: this.count - this.currentAmount + 1
+      }"
+      [queryParamsHandling]="'merge'"
+      >Prev</a
+    >
+    <a
+      *ngIf="feed.data.after"
+      class="next"
+      [routerLink]="['/r', subreddit]"
+      [queryParams]="{
+        before: null,
+        after: feed.data.after,
+        count: this.count
+      }"
+      [queryParamsHandling]="'merge'"
+      >Next</a
+    >
+  </div>
+</div>
+
+<ng-template #loading> Loading... </ng-template>

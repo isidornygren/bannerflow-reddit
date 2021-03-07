@@ -1,0 +1,23 @@
+<article *ngIf="comment && comment.data && comment.kind === 't1'"  [ngClass]="{'comment': true, 'nested': nested }">
+    <div class="step-wrapper" [ngStyle]="getNestedBackgroundColour()"></div>
+    <div class="wrapper">
+        <div class="content">
+            <p class="top-bar">
+                <span class="author">/u/{{ comment.data.author }}</span>
+                <span class="meta"><time>{{ comment.data.created_utc * 1000 | date:'medium' }}</time></span>
+            </p>
+            <div style="overflow: auto;">
+                <h2>
+                    {{ comment.data.title }}
+                </h2>
+                <span [innerHtml]="comment.data.body_html | unescape">
+                </span>
+            </div>
+            <p class="comments">
+                Score: {{ comment.data.ups }}
+            </p>
+        </div>
+
+        <app-comment *ngFor="let reply of comment.data.replies?.data?.children" [comment]="reply" [nested]="(nested || 0) + 1"></app-comment>
+    </div>
+</article>
